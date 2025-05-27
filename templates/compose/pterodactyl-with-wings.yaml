@@ -106,14 +106,14 @@ services:
     environment:
       - SERVICE_FQDN_WINGS_8443
       - "TZ=${TIMEZONE:-UTC}"
-      - WINGS_USERNAME=pterodactyl
+      - WINGS_USERNAME=$SERVICE_USER_WINGS
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/docker/containers/:/var/lib/docker/containers/"
       - "/var/lib/pterodactyl/volumes:/var/lib/pterodactyl/volumes"
       - "/tmp/pterodactyl:/tmp/pterodactyl"
-      - "wings_lib:/var/lib/pterodactyl/"
-      - "wings_logs:/var/log/pterodactyl/"
+      - wings_lib:/var/lib/pterodactyl/
+      - wings_logs:/var/log/pterodactyl/
       - type: bind
         source: ./etc/config.yml
         target: /etc/pterodactyl/config.yml
